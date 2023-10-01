@@ -1,4 +1,4 @@
-data <- read.csv('movies_n2.csv')
+data <- read_excel('movie_n2.xlsx')
 attach(data); str(data)
 
 table(data$genre2)
@@ -9,7 +9,6 @@ drama <- subset(data, genre2 == 'drama' & num_screen <= 600)
 dramalm <- lm(sales ~ distribution + view + num_screen + country, 
               data = drama)
 summary(dramalm)
-
 
 #romance - ok
 
@@ -47,7 +46,7 @@ criminallm <- lm(sales ~ distribution + view + num_screen + country + grade,
                 data = criminal)
 summary(criminallm)
 
-#others
+#others - ok
 
 others <- subset(data, genre2 == 'others' & grade == 0)
 otherslm <- lm(sales ~ distribution + view + num_screen + country, 
@@ -77,4 +76,3 @@ table(criminal$country)
 plot(sales ~ num_screen, data = criminal)
 
 table(others$grade)
-
